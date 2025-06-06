@@ -1,3 +1,48 @@
+local gui = Instance.new("ScreenGui")
+gui.Name = "patrickGui"
+gui.ResetOnSpawn = false
+gui.IgnoreGuiInset = true
+gui.Parent = game:GetService("CoreGui")
+ 
+-- Create the toggle button
+local TextButton = Instance.new("TextButton")
+TextButton.Name = "ToggleButton"
+TextButton.Text = "Toggle UI Library"
+TextButton.TextSize = 18
+TextButton.Font = Enum.Font.GothamBold
+TextButton.TextColor3 = Color3.new(0, 0, 0) -- Black text
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0) -- Green background
+TextButton.BorderColor3 = Color3.new(1, 1, 1) -- White border
+TextButton.BorderSizePixel = 2
+TextButton.Size = UDim2.new(0, 140, 0, 40) -- Good size for mobile
+TextButton.Position = UDim2.new(0, 10, 1, -50) -- Bottom-left corner
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.AutoButtonColor = true
+TextButton.Parent = gui
+ 
+-- Rounded corners
+local cornerUI = Instance.new("UICorner")
+cornerUI.CornerRadius = UDim.new(0, 8)
+cornerUI.Parent = TextButton
+ 
+-- White outline
+local uiStroke = Instance.new("UIStroke")
+uiStroke.Color = Color3.new(1, 1, 1)
+uiStroke.Thickness = 2
+uiStroke.Parent = TextButton
+ 
+-- Toggle functionality
+TextButton.MouseButton1Click:Connect(function()
+    if Library and Library.ToggleUI then
+        Library:ToggleUI()
+    end
+end)
+ 
+-- Mobile-friendly interaction
+TextButton.Active = true
+TextButton.Selectable = true
+
+
 local Kavo = {}
 
 local tween = game:GetService("TweenService")
@@ -2666,46 +2711,3 @@ return Kavo
 
 
 
-local gui = Instance.new("ScreenGui")
-gui.Name = "patrickGui"
-gui.ResetOnSpawn = false
-gui.IgnoreGuiInset = true
-gui.Parent = game:GetService("CoreGui")
- 
--- Create the toggle button
-local TextButton = Instance.new("TextButton")
-TextButton.Name = "ToggleButton"
-TextButton.Text = "Toggle UI Library"
-TextButton.TextSize = 18
-TextButton.Font = Enum.Font.GothamBold
-TextButton.TextColor3 = Color3.new(0, 0, 0) -- Black text
-TextButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0) -- Green background
-TextButton.BorderColor3 = Color3.new(1, 1, 1) -- White border
-TextButton.BorderSizePixel = 2
-TextButton.Size = UDim2.new(0, 140, 0, 40) -- Good size for mobile
-TextButton.Position = UDim2.new(0, 10, 1, -50) -- Bottom-left corner
-TextButton.AnchorPoint = Vector2.new(0, 0)
-TextButton.AutoButtonColor = true
-TextButton.Parent = gui
- 
--- Rounded corners
-local cornerUI = Instance.new("UICorner")
-cornerUI.CornerRadius = UDim.new(0, 8)
-cornerUI.Parent = TextButton
- 
--- White outline
-local uiStroke = Instance.new("UIStroke")
-uiStroke.Color = Color3.new(1, 1, 1)
-uiStroke.Thickness = 2
-uiStroke.Parent = TextButton
- 
--- Toggle functionality
-TextButton.MouseButton1Click:Connect(function()
-    if Library and Library.ToggleUI then
-        Library:ToggleUI()
-    end
-end)
- 
--- Mobile-friendly interaction
-TextButton.Active = true
-TextButton.Selectable = true
